@@ -7,7 +7,7 @@
 
 int main(void) {
 
-    
+    /*
     int i, columns = 0;
     
     int *inputs = get_inputs("mnist_train.txt");
@@ -26,7 +26,9 @@ int main(void) {
     
     
     free(inputs);
- 
+    */
+
+    
     /*
     print_input("mnist_train.txt");
     */

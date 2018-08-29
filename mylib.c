@@ -80,6 +80,7 @@ int *get_inputs(char *file) {
             c = getc(infile);
         }
     }
+    fclose(infile);
     return inputs;
 }
 
@@ -104,4 +105,6 @@ void print_input(char *file) {
             }
         }
     }
+
+    fclose(infile);
 }
