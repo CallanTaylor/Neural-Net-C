@@ -30,14 +30,24 @@ void flexarray_append(flexarray f, char c) {
 
 
 void flexarray_print(flexarray f) {
-    int i;
-    for (i = 0; i < f->num_keys; i++) {
-        printf("%c ", f->key[i]);
-    }
+    printf("%s\n", f->key);
 }
 
 
 void flexarray_free(flexarray f) {
     free(f->key);
     free(f);
+}
+
+
+void flexarray_refresh(flexarray f) {
+    f->capacity = 1;
+    f->num_keys = 0;
+    free(f->key);
+    f->key = emalloc(f->capacity * sizeof f->key[0]);
+}
+
+
+int flexarray_get_key(flexarray f) {
+    return atoi(f->key);
 }
