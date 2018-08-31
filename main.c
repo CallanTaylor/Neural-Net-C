@@ -1,39 +1,40 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "mylib.h"
+#include "utils.h"
 #include "neuron.h"
 #include "neuralnet.h"
 
 
 int main(void) {
 
-    /*
-    int i, columns = 0;
-    
-    int *inputs = get_inputs("mnist_train.txt");
-    
 
-    
+    int i;
+    int columns = 0;
+
+
+    int *inputs = get_inputs("mnist_train.txt");
+
     for (i = 0; i < 784; i++) {
         if (columns < 27) {
-            printf("%3d ", inputs[i]);
+            printf("%4d", inputs[i]);
             columns++;
         } else {
-            printf("%3d\n", inputs[i]);
+            printf("%4d\n", inputs[i]);
             columns = 0;
         }
     }
-    
-    
-    free(inputs);
-    */
 
-    
+    print_inputs("mnist_train.txt");
+
+    free(inputs);
+
+
     /*
     print_input("mnist_train.txt");
     */
-    
-    /* for testing if the net works 
+
+    /* for testing if the net works
     int *l = emalloc(3 * sizeof l[0]);
     double *inputs = emalloc(3 * sizeof inputs[0]);
     int i;

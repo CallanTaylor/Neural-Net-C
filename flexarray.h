@@ -9,7 +9,6 @@ extern void        flexarray_free(flexarray f);
 extern void        flexarray_append(flexarray f, char c);
 extern void        flexarray_print(flexarray f);
 extern int         flexarray_get_key(flexarray f);
-extern void        flexarray_refresh(flexarray f);
 
 
 #endif
