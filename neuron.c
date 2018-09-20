@@ -74,12 +74,17 @@ void neuron_free(neuron n) {
  * back_propogate function needs the raw predicition value to compute the
  * partial derivitive).
  */
-double forward_pass(double *inputs, neuron n) {
+void forward_pass(double *inputs, neuron n) {
     int i;
     double result;
     result = n->bais;
     for (i = 0; i < n->num_inputs; i++) {
         result += inputs[i] * n->weights[i];
     }
-    return result;
+    n->result = sigmoid(result);
+}
+
+
+double get_result(neuron n) {
+    return n->result;
 }

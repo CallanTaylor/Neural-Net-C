@@ -78,3 +78,22 @@ void neuralnet_free(neuralnet nn) {
 }
 
 
+void neuralnet_predict(neuralnet nn, double *inputs) {
+    double *prev_layer_results;
+    int i, j, k;
+    for (i = 0; i < nn->num_layers; i++) {
+        for (j = 0; j < nn->layers[i]; j++) {
+            if (i == 0) {
+                forward_pass(inputs, nn->neurons[i][j]);
+            } else {
+                prev_layer_results =
+                    emalloc(nn->layers[i - 1] * sizeof prev_layer_results[0]);
+                for (k = 0; k < nn->layers[i - 1]; k++) {
+                    prev_layer_results[k] = get_result(nn->neurons[i - 1][k]);
+                }
+                forward_pass(prev_layer_results, nn->neurons[i][j]);
+                free(prev_layer_results);
+            }
+        }
+    }
+}

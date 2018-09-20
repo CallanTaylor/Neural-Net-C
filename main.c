@@ -12,9 +12,9 @@ int main(void) {
     neuralnet nn;
 
 
-    /* double *inputs = get_inputs("mnist_train.txt", 7);
+    double *inputs = get_inputs("mnist_train.txt", 7);
 
-    
+    /*
     for (i = 0; i < 784; i++) {
         if (columns < 27) {
             printf("%.1f  ", inputs[i]);
@@ -30,7 +30,9 @@ int main(void) {
     l[0] = 10;
     l[1] = 10;
     nn = neuralnet_new(l, 2, 10);
+    neuralnet_predict(nn, inputs);
     neuralnet_free(nn);
+    free(inputs);
     free(l);
     
 
