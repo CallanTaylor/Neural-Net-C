@@ -78,14 +78,11 @@ int *get_labels(char *file) {
  */
 double *get_inputs(char *file, int position) {
     FILE *infile = fopen(file, "r");
-    flexarray *f = emalloc(784 * sizeof f[0]);
+    flexarray f;
     double *inputs = emalloc(784 * sizeof inputs[0]);
     char c;
     int num_inputs = 0, i;
-
-    for (i = 0; i < 784; i++) {
-        f[i] = flexarray_new();
-    }
+    f = flexarray_new();
 
     if (infile) {
         i = 0;
@@ -99,19 +96,19 @@ double *get_inputs(char *file, int position) {
         c = getc(infile);
         while (EOF != (c = getc(infile)) && num_inputs < 784) {
             if (c >= '0' && c <= '9') {
-                flexarray_append(f[num_inputs], c);
+                flexarray_append(f, c);
             } else {
-                inputs[num_inputs] = (double)flexarray_get_key(f[num_inputs])/ 255;
+                inputs[num_inputs] = (double)flexarray_get_key(f)/ 255;
+                flexarray_free(f);
+                f = flexarray_new();
                 num_inputs++;
             }
         }
     }
-
-    for (i = 0; i < 784; i++) {
-        flexarray_free(f[i]);
+    if (f != NULL) {
+        flexarray_free(f);
     }
 
-    free(f);
     fclose(infile);
     return inputs;
 }

@@ -7,7 +7,6 @@
 
 int main(void) {
 
-
     int *l;
     neuralnet nn;
 

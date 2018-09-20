@@ -64,5 +64,5 @@ void flexarray_free(flexarray f) {
  * @return: an integer representation of the key.
  */
 int flexarray_get_key(flexarray f) {
-  return atoi(f->key);
+    return atoi(f->key);
 }
