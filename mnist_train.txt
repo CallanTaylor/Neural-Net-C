@@ -1,0 +1,1 @@
+/home/cshome/c/caltaylor/Downloads/mnist_train.txt
